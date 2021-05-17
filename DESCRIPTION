@@ -1,0 +1,43 @@
+Package: denyranges
+Title: Genomic coordinates of problematic genomic regions
+Version: 0.99.0
+Authors@R: c(
+    person(given = "Mikhail",
+           family = "Dozmorov",
+           role = c("aut", "cre"),
+           email = "mikhail.dozmorov@gmail.com",
+           comment = c(ORCID = "0000-0002-0086-8358")),
+    person(given = "Eric",
+           family = "Davis",
+           role = c("aut")),
+    person(given = "Wancen",
+           family = "Mu",
+           role = c("aut")),
+    person(given = "Stuart",
+           family = "Lee",
+           role = c("aut")),
+    person(given = "Douglas",
+           family = "Phanstiel",
+           role = c("aut")),
+    person(given = "Michael",
+           family = "Love",
+           role = c("aut"))
+           )
+Description: Genomic coordinates of problematic genomic regions as GRanges. 
+    Primarily for human and mouse genomes, hg19/hg38 and mm9/mm10 genome 
+    assemblies. Data source: the ENCODE project.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+URL: https://github.com/mdozmorov/denyranges
+BugReports: https://github.com/mdozmorov/denyranges/issues
+Suggests: 
+    BiocStyle,
+    knitr,
+    RefManageR,
+    rmarkdown,
+    sessioninfo
+VignetteBuilder: knitr
+biocViews: AnnotationData, AnnotationHub, Genome, blacklisted
