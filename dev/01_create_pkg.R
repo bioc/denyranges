@@ -52,11 +52,11 @@ if (!requireNamespace("BiocStyle", quietly = TRUE)) {
 
 
 ## Package names have some properties. You can also use:
-available::available("CTCF")
+available::available("denyranges")
 ## to check that your package name is not taken and that it doesn't have
 ## a meaning that you might not be aware of.
 
-usethis::create_package("CTCF")
+usethis::create_package("denyranges")
 ## This opens a new window in RStudio
 
 ## Note: If you create packages frequently, check the help file for

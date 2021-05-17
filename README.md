@@ -245,7 +245,7 @@ This is a basic example which shows you how to solve a common problem:
 
 
 ```r
-library("CTCF")
+library("denyranges")
 ## basic example code
 ```
 
@@ -274,34 +274,37 @@ In that case, don't forget to commit and push the resulting figure files, so the
 
 ## Citation
 
-Below is the citation output from using `citation('CTCF')` in R. Please
-run this yourself to check for any updates on how to cite **CTCF**.
+Below is the citation output from using `citation('denyranges')` in R.
+Please run this yourself to check for any updates on how to cite
+**denyranges**.
 
 ``` r
-print(citation("CTCF"), bibtex = TRUE)
+print(citation("denyranges"), bibtex = TRUE)
 #> 
-#> Dozmorov MG (2021). _CTCF_. https://github.com/mdozmorov/CTCF/CTCF - R
-#> package version 0.99.0, <URL: https://github.com/mdozmorov/CTCF>.
+#> Dozmorov MG (2021). _denyranges_.
+#> https://github.com/mdozmorov/denyranges/denyranges - R package version
+#> 0.99.0, <URL: https://github.com/mdozmorov/denyranges>.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
 #>   @Manual{,
-#>     title = {CTCF},
+#>     title = {denyranges},
 #>     author = {Mikhail G. Dozmorov},
 #>     year = {2021},
-#>     url = {https://github.com/mdozmorov/CTCF},
-#>     note = {https://github.com/mdozmorov/CTCF/CTCF - R package version 0.99.0},
+#>     url = {https://github.com/mdozmorov/denyranges},
+#>     note = {https://github.com/mdozmorov/denyranges/denyranges - R package version 0.99.0},
 #>   }
 ```
 
-Please note that the `CTCF` was only made possible thanks to many other
-R and bioinformatics software authors, which are cited either in the
-vignettes and/or the paper(s) describing this package.
+Please note that the `denyranges` was only made possible thanks to many
+other R and bioinformatics software authors, which are cited either in
+the vignettes and/or the paper(s) describing this package.
 
 ## Code of Conduct
 
-Please note that the `CTCF` project is released with a [Contributor Code
-of Conduct](http://bioconductor.org/about/code-of-conduct/). By
+Please note that the `denyranges` project is released with a
+[Contributor Code of
+Conduct](http://bioconductor.org/about/code-of-conduct/). By
 contributing to this project, you agree to abide by its terms.
 
 ## Development tools
@@ -317,8 +320,8 @@ contributing to this project, you agree to abide by its terms.
 -   Code coverage assessment is possible thanks to
     [codecov](https://codecov.io/gh) and
     *[covr](https://CRAN.R-project.org/package=covr)*.
--   The [documentation website](http://mdozmorov.github.io/CTCF) is
-    automatically updated thanks to
+-   The [documentation website](http://mdozmorov.github.io/denyranges)
+    is automatically updated thanks to
     *[pkgdown](https://CRAN.R-project.org/package=pkgdown)*.
 -   The code is styled automatically thanks to
     *[styler](https://CRAN.R-project.org/package=styler)*.
@@ -333,6 +336,6 @@ This package was developed using
 
 ## Code of Conduct
 
-Please note that the CTCF project is released with a [Contributor Code
-of Conduct](http://bioconductor.org/about/code-of-conduct/). By
+Please note that the denyranges project is released with a [Contributor
+Code of Conduct](http://bioconductor.org/about/code-of-conduct/). By
 contributing to this project, you agree to abide by its terms.
