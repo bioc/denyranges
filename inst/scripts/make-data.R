@@ -136,7 +136,7 @@ for (file in files) {
     colnames(denyBED) <- c("chr", "start", "stop", "name", "score", "strand")
   }
   # Convert to GRanges object
-  denyGR <- GenomicRanges::makeGRangesFromDataFrame(denyBED)
+  denyGR <- GenomicRanges::makeGRangesFromDataFrame(denyBED, keep.extra.columns = TRUE)
   # Add seqinfo
   # Parse out genome ID from the file name, to get hg19, hg38, mm9, mm10, etc.
   genome_id <- strsplit(file, ".", fixed = TRUE)[[1]][1]

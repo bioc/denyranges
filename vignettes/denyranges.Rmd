@@ -79,27 +79,27 @@ See [../inst/scripts/make-data.R](inst/scripts/make-data.R) how to create the de
 GRanges objects.
 
 
-| Object                                                   | Number of regions | Lab                                   | Source                                                                                                  |
-|----------------------------------------------------------|-------------------|---------------------------------------|---------------------------------------------------------------------------------------------------------|
-| hg19.Bernstein.Mint_Blacklist_hg19                       | 9035              | Bradley Bernstein, Broad              | [ENCFF200UUD](https://www.encodeproject.org/files/ENCFF200UUD/)                                         |
-| hg19.Birney.wgEncodeDacMapabilityConsensusExcludable     | 411               | Ewan Birney, EBI                      | [ENCFF001TDO](https://www.encodeproject.org/files/ENCFF001TDO/)                                         |
-| hg19.Crawford.wgEncodeDukeMapabilityRegionsExcludable    | 1649              | Gregory Crawford, Duke                | [ENCFF001THR](https://www.encodeproject.org/files/ENCFF001THR/)                                         |
-| hg19.Wold.hg19mitoblack                                  | 295               | Barbara Wold, Caltech                 | [ENCFF055QTV](https://www.encodeproject.org/files/ENCFF055QTV/)                                         |
-| hg19.Yeo.eCLIP_blacklistregions.hg19                     | 57                | Gene Yeo, UCSD                        | [ENCFF039QTN](https://www.encodeproject.org/files/ENCFF039QTN/)                                         |
-| hg38.Bernstein.Mint_Blacklist_GRCh38                     | 12052             | Bradley Bernstein, Broad              | [ENCFF023CZC](https://www.encodeproject.org/files/ENCFF023CZC/)                                         |
-| hg38.Kundaje.GRCh38_unified_blacklist                    | 38                | hg38.Kundaje.GRCh38_unified_blacklist | [ENCFF356LFX](https://www.encodeproject.org/files/ENCFF356LFX/)                                         |
-| hg38.Kundaje.GRCh38.blacklist                            | 910               | Anshul Kundaje, Stanford              | [ENCFF419RSJ](https://www.encodeproject.org/files/ENCFF419RSJ/)                                         |
-| hg38.Reddy.wgEncodeDacMapabilityConsensusExcludable.hg38 | 401               | Tim Reddy, Duke                       | [ENCFF220FIN](https://www.encodeproject.org/files/ENCFF220FIN/)                                         |
-| hg38.Wold.hg38mitoblack                                  | 299               | Barbara Wold, Caltech                 | [ENCFF940NTE](https://www.encodeproject.org/files/ENCFF940NTE/)                                         |
-| hg38.Yeo.eCLIP_blacklistregions.hg38liftover.bed.fixed.  | 56                | Gene Yeo, UCSD                        | [ENCFF269URO](https://www.encodeproject.org/files/ENCFF269URO/)                                         |
-| mm10.Hardison.blacklist.full                             | 7865              | Ross Hardison, PennState              | [ENCFF790DJT](https://www.encodeproject.org/files/ENCFF790DJT/)                                         |
-| mm10.Hardison.psublacklist.mm10                          | 5552              | Ross Hardison, PennState              | [ENCFF226BDM](https://www.encodeproject.org/files/ENCFF226BDM/)                                         |
-| mm10.Kundaje.anshul.blacklist.mm10                       | 3010              | Anshul Kundaje, Stanford              | [ENCFF999QPV](https://www.encodeproject.org/files/ENCFF999QPV/)                                         |
-| mm10.Kundaje.mm10.blacklist                              | 164               | Anshul Kundaje, Stanford              | [ENCFF547MET](https://www.encodeproject.org/files/ENCFF547MET/)                                         |
-| mm10.Wold.mm10mitoblack                                  | 123               | Barbara Wold, Caltech                 | [ENCFF759PJK](https://www.encodeproject.org/files/ENCFF759PJK/)                                         |
-| mm9.Wold.mm9mitoblack                                    | 123               | Barbara Wold, Caltech                 | [ENCFF299EZH](https://www.encodeproject.org/files/ENCFF299EZH/)                                         |
-| dm3.Kundaje.dm3-blacklist                                | 492               | Anshul Kundaje, Stanford              | [dm3-D.melanogaster](http://mitra.stanford.edu/kundaje/akundaje/release/blacklists/dm3-D.melanogaster/) |
-| ce10.Kundaje.ce10-blacklist                              | 122               | Anshul Kundaje, Stanford              | [ce10-C.elegans](http://mitra.stanford.edu/kundaje/akundaje/release/blacklists/ce10-C.elegans)          |
+| Object                                                       | Number of regions | Assembly | Lab                      | Number of columns | Source                                                                                                  |
+|--------------------------------------------------------------|-------------------|----------|--------------------------|-------------------|---------------------------------------------------------------------------------------------------------|
+| ce10.Kundaje.ce10-blacklist.rds                              | 122               | ce10     | Anshul Kundaje, Stanford | 3                 | [ce10-C.elegans](http://mitra.stanford.edu/kundaje/akundaje/release/blacklists/ce10-C.elegans)          |
+| dm3.Kundaje.dm3-blacklist.rds                                | 492               | dm3      | Anshul Kundaje, Stanford | 3                 | [dm3-D.melanogaster](http://mitra.stanford.edu/kundaje/akundaje/release/blacklists/dm3-D.melanogaster/) |
+| hg19.Bernstein.Mint_Blacklist_hg19.rds                       | 9035              | hg19     | Bradley Bernstein, Broad | 6                 | [ENCFF200UUD](https://www.encodeproject.org/files/ENCFF200UUD/)                                         |
+| hg19.Birney.wgEncodeDacMapabilityConsensusExcludable.rds     | 411               | hg19     | Ewan Birney, EBI         | 6                 | [ENCFF001TDO](https://www.encodeproject.org/files/ENCFF001TDO/)                                         |
+| hg19.Crawford.wgEncodeDukeMapabilityRegionsExcludable.rds    | 1649              | hg19     | Gregory Crawford, Duke   | 6                 | [ENCFF001THR](https://www.encodeproject.org/files/ENCFF001THR/)                                         |
+| hg19.Wold.hg19mitoblack.rds                                  | 295               | hg19     | Barbara Wold, Caltech    | 3                 | [ENCFF055QTV](https://www.encodeproject.org/files/ENCFF055QTV/)                                         |
+| hg19.Yeo.eCLIP_blacklistregions.hg19.rds                     | 57                | hg19     | Gene Yeo, UCSD           | 6                 | [ENCFF039QTN](https://www.encodeproject.org/files/ENCFF039QTN/)                                         |
+| hg38.Bernstein.Mint_Blacklist_GRCh38.rds                     | 12052             | hg38     | Bradley Bernstein, Broad | 6                 | [ENCFF023CZC](https://www.encodeproject.org/files/ENCFF023CZC/)                                         |
+| hg38.Kundaje.GRCh38.blacklist.rds                            | 38                | hg38     | Anshul Kundaje, Stanford | 3                 | [ENCFF356LFX](https://www.encodeproject.org/files/ENCFF356LFX/)                                         |
+| hg38.Kundaje.GRCh38_unified_blacklist.rds                    | 910               | hg38     | Anshul Kundaje, Stanford | 3                 | [ENCFF419RSJ](https://www.encodeproject.org/files/ENCFF419RSJ/)                                         |
+| hg38.Reddy.wgEncodeDacMapabilityConsensusExcludable.hg38.rds | 401               | hg38     | Tim Reddy, Duke          | 6                 | [ENCFF220FIN](https://www.encodeproject.org/files/ENCFF220FIN/)                                         |
+| hg38.Wold.hg38mitoblack.rds                                  | 299               | hg38     | Barbara Wold, Caltech    | 3                 | [ENCFF940NTE](https://www.encodeproject.org/files/ENCFF940NTE/)                                         |
+| hg38.Yeo.eCLIP_blacklistregions.hg38liftover.bed.fixed.rds   | 56                | hg38     | Gene Yeo, UCSD           | 6                 | [ENCFF269URO](https://www.encodeproject.org/files/ENCFF269URO/)                                         |
+| mm10.Hardison.blacklist.full.rds                             | 7865              | mm10     | Ross Hardison, PennState | 3                 | [ENCFF790DJT](https://www.encodeproject.org/files/ENCFF790DJT/)                                         |
+| mm10.Hardison.psublacklist.mm10.rds                          | 5552              | mm10     | Ross Hardison, PennState | 3                 | [ENCFF226BDM](https://www.encodeproject.org/files/ENCFF226BDM/)                                         |
+| mm10.Kundaje.anshul.blacklist.mm10.rds                       | 3010              | mm10     | Anshul Kundaje, Stanford | 3                 | [ENCFF999QPV](https://www.encodeproject.org/files/ENCFF999QPV/)                                         |
+| mm10.Kundaje.mm10.blacklist.rds                              | 164               | mm10     | Anshul Kundaje, Stanford | 3                 | [ENCFF547MET](https://www.encodeproject.org/files/ENCFF547MET/)                                         |
+| mm10.Wold.mm10mitoblack.rds                                  | 123               | mm10     | Barbara Wold, Caltech    | 3                 | [ENCFF759PJK](https://www.encodeproject.org/files/ENCFF759PJK/)                                         |
+| mm9.Wold.mm9mitoblack.rds                                    | 123               | mm9      | Barbara Wold, Caltech    | 3                 | [ENCFF299EZH](https://www.encodeproject.org/files/ENCFF299EZH/)                                         |
 
 ## Install `denyranges`
 
@@ -190,7 +190,7 @@ ggsave("denyranges_hg38_count.png", width = 5.5, height = 2)
 ```
 
 ```{r echo=FALSE}
-knitr::include_graphics('man/figures/denyranges_hg38_count.png')
+knitr::include_graphics('../man/figures/denyranges_hg38_count.png')
 ```
 
 Compare the width of deny regions. log2 scale because of heavy right tail distributions.
@@ -217,7 +217,7 @@ ggsave("denyranges_hg38_width.png", width = 5.5, height = 2)
 ```
 
 ```{r echo=FALSE}
-knitr::include_graphics('man/figures/denyranges_hg38_width.png')
+knitr::include_graphics('../man/figures/denyranges_hg38_width.png')
 ```
 
 We can investigate the total width of each set of deny ranges.
@@ -294,7 +294,22 @@ dev.off()
 ```
 
 ```{r echo=FALSE}
-knitr::include_graphics('man/figures/denyranges_hg38_jaccard.png')
+knitr::include_graphics('../man/figures/denyranges_hg38_jaccard.png')
+```
+
+Note that some deny ranges objects contain six columns, implying there may be 
+some interesting metadata. Let's explore one.
+
+```{r}
+mcols(denyGR.hg38.Reddy)
+mtx_to_plot <- as.data.frame(table(mcols(denyGR.hg38.Reddy)[["name"]]))
+colnames(mtx_to_plot) <- c("Type", "Number")
+mtx_to_plot <- mtx_to_plot[order(mtx_to_plot$Number), ]
+mtx_to_plot$Type <- factor(mtx_to_plot$Type, levels = mtx_to_plot$Type)
+ggplot(mtx_to_plot, aes(x = Number, y = Type, fill = Type)) +
+  geom_bar(stat="identity") +
+  theme_bw() + theme(legend.position = "none")
+ggsave("denyranges_hg38_Reddy_metadata.png", width = 5, height = 2.5)
 ```
 
 One may decide to combine the deny ranges from all labs, although from previous 
