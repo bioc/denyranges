@@ -175,7 +175,7 @@ mtx_to_plot$Source <- factor(mtx_to_plot$Source, levels = mtx_to_plot$Source[ord
 ggplot(mtx_to_plot, aes(x = Source, y = Count, fill = Source)) +
   geom_bar(stat = "identity") +
   coord_flip() +
-  theme_bw() + theme(legend.position = "none")
+  theme_bw() + theme(legend.position = "none") + scale_x_discrete(label=abbreviate)
 ggsave("denyranges_hg38_count.png", width = 5.5, height = 2)
 ```
 
