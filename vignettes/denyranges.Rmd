@@ -175,8 +175,8 @@ mtx_to_plot$Source <- factor(mtx_to_plot$Source, levels = mtx_to_plot$Source[ord
 ggplot(mtx_to_plot, aes(x = Source, y = Count, fill = Source)) +
   geom_bar(stat = "identity") +
   coord_flip() +
-  theme_bw() + theme(legend.position = "none") + scale_x_discrete(label=abbreviate)
-ggsave("denyranges_hg38_count.png", width = 5.5, height = 2)
+  theme_bw() + scale_x_discrete(label=abbreviate)
+ggsave("denyranges_hg38_count.png", width = 6.5, height = 2)
 ```
 
 ```{r echo=FALSE}
@@ -192,13 +192,39 @@ mtx_to_plot <- data.frame(Width = c(width(denyGR.hg38.Bernstein), width(denyGR.h
 
 ggplot(mtx_to_plot, aes(x = log2(Width), y = Source, fill = Source)) +
   geom_density_ridges() +
-  theme_bw() + theme(legend.position = "none")
-ggsave("denyranges_hg38_width.png", width = 5.5, height = 2)
+  theme_bw() + scale_y_discrete(label=abbreviate)
+ggsave("denyranges_hg38_width.png", width = 6.5, height = 2)
 ```
 
 ```{r echo=FALSE}
 knitr::include_graphics('../man/figures/denyranges_hg38_width.png')
 ```
+
+We can investigate total width of each set of deny ranges.
+
+```{r eval=FALSE}
+mtx_to_plot <- data.frame(TotalWidth = c(sum(width(denyGR.hg38.Bernstein)), 
+                                         sum(width(denyGR.hg38.Kundaje.1)), 
+                                         sum(width(denyGR.hg38.Kundaje.2)), 
+                                         sum(width(denyGR.hg38.Reddy)), 
+                                         sum(width(denyGR.hg38.Wold)), 
+                                         sum(width(denyGR.hg38.Yeo))), 
+                          Source = c("Bernstein.Mint_Blacklist_GRCh38", 
+                                     "Kundaje.GRCh38_unified_blacklist", 
+                                     "Kundaje.GRCh38.blacklist", 
+                                     "Reddy.wgEncodeDacMapabilityConsensusExcludable", 
+                                     "Wold.hg38mitoblack", 
+                                     "Yeo.eCLIP_blacklistregions.hg38liftover"))
+ggplot(mtx_to_plot, aes(x = TotalWidth, y = Source, fill = Source)) + 
+  geom_bar(stat="identity") + scale_x_log10() + scale_y_discrete(label=abbreviate) +
+  xlab("log10 total width")
+ggsave("denyranges_hg38_sumwidth.png", width = 6.5, height = 2)
+```
+
+```{r echo=FALSE}
+knitr::include_graphics('../man/figures/denyranges_hg38_sumwidth.png')
+```
+
 
 To compare pairwise Jaccard overlap between those deny regions, we download the 
 bed files and use `bedtools` functionality.
