@@ -138,8 +138,18 @@ Compare the number of deny regions.
 
 ```{r eval=FALSE}
 library(ggplot2)
-mtx_to_plot <- data.frame(Count = c(length(denyGR.hg38.Bernstein), length(denyGR.hg38.Kundaje.1), length(denyGR.hg38.Kundaje.2), length(denyGR.hg38.Reddy), length(denyGR.hg38.Wold), length(denyGR.hg38.Yeo)),
-                          Source = c("Bernstein.Mint_Blacklist_GRCh38", "Kundaje.GRCh38_unified_blacklist", "Kundaje.GRCh38.blacklist", "Reddy.wgEncodeDacMapabilityConsensusExcludable", "Wold.hg38mitoblack", "Yeo.eCLIP_blacklistregions.hg38liftover.bed"))
+mtx_to_plot <- data.frame(Count = c(length(denyGR.hg38.Bernstein), 
+                                    length(denyGR.hg38.Kundaje.1), 
+                                    length(denyGR.hg38.Kundaje.2), 
+                                    length(denyGR.hg38.Reddy), 
+                                    length(denyGR.hg38.Wold), 
+                                    length(denyGR.hg38.Yeo)),
+                          Source = c("Bernstein.Mint_Blacklist_GRCh38", 
+                                     "Kundaje.GRCh38_unified_blacklist", 
+                                     "Kundaje.GRCh38.blacklist", 
+                                     "Reddy.wgEncodeDacMapabilityConsensusExcludable", 
+                                     "Wold.hg38mitoblack", 
+                                     "Yeo.eCLIP_blacklistregions.hg38liftover.bed"))
 # Order Source by the number of regions
 mtx_to_plot$Source <- factor(mtx_to_plot$Source, levels = mtx_to_plot$Source[order(mtx_to_plot$Count)])
 
@@ -158,8 +168,18 @@ Compare the width of deny regions. log2 scale because of heavy right tail distri
 
 ```{r eval=FALSE}
 library(ggridges)
-mtx_to_plot <- data.frame(Width = c(width(denyGR.hg38.Bernstein), width(denyGR.hg38.Kundaje.1), width(denyGR.hg38.Kundaje.2), width(denyGR.hg38.Reddy), width(denyGR.hg38.Wold), width(denyGR.hg38.Yeo)),
-                          Source = c(rep("Bernstein.Mint_Blacklist_GRCh38", length(denyGR.hg38.Bernstein)), rep("Kundaje.GRCh38_unified_blacklist", length(denyGR.hg38.Kundaje.1)), rep("Kundaje.GRCh38.blacklist", length(denyGR.hg38.Kundaje.2)), rep("Reddy.wgEncodeDacMapabilityConsensusExcludable", length(denyGR.hg38.Reddy)), rep("Wold.hg38mitoblack", length(denyGR.hg38.Wold)), rep("Yeo.eCLIP_blacklistregions.hg38liftover.bed", length(denyGR.hg38.Yeo))))
+mtx_to_plot <- data.frame(Width = c(width(denyGR.hg38.Bernstein), 
+                                    width(denyGR.hg38.Kundaje.1), 
+                                    width(denyGR.hg38.Kundaje.2), 
+                                    width(denyGR.hg38.Reddy), 
+                                    width(denyGR.hg38.Wold), 
+                                    width(denyGR.hg38.Yeo)),
+                          Source = c(rep("Bernstein.Mint_Blacklist_GRCh38", length(denyGR.hg38.Bernstein)),
+                                     rep("Kundaje.GRCh38_unified_blacklist", length(denyGR.hg38.Kundaje.1)),
+                                     rep("Kundaje.GRCh38.blacklist", length(denyGR.hg38.Kundaje.2)),
+                                     rep("Reddy.wgEncodeDacMapabilityConsensusExcludable", length(denyGR.hg38.Reddy)),
+                                     rep("Wold.hg38mitoblack", length(denyGR.hg38.Wold)),
+                                     rep("Yeo.eCLIP_blacklistregions.hg38liftover.bed", length(denyGR.hg38.Yeo))))
 
 ggplot(mtx_to_plot, aes(x = log2(Width), y = Source, fill = Source)) +
   geom_density_ridges() +
@@ -171,7 +191,7 @@ ggsave("denyranges_hg38_width.png", width = 5.5, height = 2)
 knitr::include_graphics('man/figures/denyranges_hg38_width.png')
 ```
 
-We can investigate total width of each set of deny ranges.
+We can investigate the total width of each set of deny ranges.
 
 ```{r eval=FALSE}
 mtx_to_plot <- data.frame(TotalWidth = c(sum(width(denyGR.hg38.Bernstein)), 
@@ -196,62 +216,51 @@ ggsave("denyranges_hg38_sumwidth.png", width = 6.5, height = 2)
 knitr::include_graphics('../man/figures/denyranges_hg38_sumwidth.png')
 ```
 
-To compare pairwise Jaccard overlap between those deny regions, we download the 
-bed files and use `bedtools` functionality.
+We can compare Jaccard overlap between those sets of deny regions.
 
-```{r eval=FALSE}
-download.file(url = "https://drive.google.com/uc?export=download&id=16RhQF3haGbmvy6vPkKfAHDkQH391VKSR", destfile = "hg38.Bernstein.Mint_Blacklist_GRCh38.bed")
-
-download.file(url = "https://drive.google.com/uc?export=download&id=1kC4zcNark-BSafuYJq7eNj__hpWij3Ec", destfile = "hg38.Kundaje.GRCh38_unified_blacklist.bed")
-
-download.file(url = "https://drive.google.com/uc?export=download&id=1_TezPxxUHI_ez1gj-AlQmu2hU4TuZBa7", destfile = "hg38.Kundaje.GRCh38.blacklist.bed")
-
-download.file(url = "https://drive.google.com/uc?export=download&id=1nkHQHJnwYXTgGjlw2kKFTS3nNZBDfLNf", destfile = "hg38.Reddy.wgEncodeDacMapabilityConsensusExcludable.hg38.bed")
-
-download.file(url = "https://drive.google.com/uc?export=download&id=15EqvKch9tn_HmQo4WrKlIrf2zb1g5JKN", destfile = "hg38.Wold.hg38mitoblack.bed")
-
-download.file(url = "https://drive.google.com/uc?export=download&id=1pJ9gcOYKnvFvhy3BAYuRiypcgtfV65uJ", destfile = "hg38.Yeo.eCLIP_blacklistregions.hg38liftover.bed.fixed.bed")
-```
-
-```{bash eval=FALSE}
-#!/bin/bash
-
-for file1 in `ls *.bed`
-do
-  sort -k 1,1 -k2,2n $file1 -o $file1
-done
-
-file_labels=`ls *.bed`
-
-echo name" "$file_labels > pairwise_jaccard.txt
-
-for file1 in `ls *.bed`
-do
-    echo -n $file1 >> pairwise_jaccard.txt
-
-    for file2 in `ls *.bed`;
-    do
-        # compute the jaccard stat for these two files.
-        jaccard=`bedtools jaccard -a $file1 -b $file2 | cut -f 3 | sed 1d`
-        
-        # report the jaccard stat for these two files
-        echo -n " "$jaccard >> pairwise_jaccard.txt
-    done
-    echo >> pairwise_jaccard.txt
-done
-```
-
-```{r eval=FALSE}
+```{r}
 library(pheatmap)
 library(stringr)
-mtx_to_plot <- read.table("pairwise_jaccard.txt", sep = " ", header = TRUE, row.names = 1) 
-mtx_to_plot <- as.matrix(mtx_to_plot)
+# Jaccard calculations
+jaccard <- function(gr_a, gr_b) {
+  intersects <- intersect(gr_a, gr_b, ignore.strand = TRUE)
+  intersection <- sum(width(intersects))
+  union <- sum(width(union(gr_a, gr_b, ignore.strand = TRUE)))
+  DataFrame(intersection, union, 
+            jaccard = intersection/union,
+             n_intersections = length(intersects))
+}
+# List and names of all deny regions
+all_denyGR_list <- list(denyGR.hg38.Bernstein, 
+                        denyGR.hg38.Kundaje.1, 
+                        denyGR.hg38.Kundaje.2,
+                        denyGR.hg38.Reddy,
+                        denyGR.hg38.Wold,
+                        denyGR.hg38.Yeo)
+all_denyGR_name <- c("Bernstein.Mint_Blacklist_GRCh38", 
+                     "Kundaje.GRCh38_unified_blacklist", 
+                     "Kundaje.GRCh38.blacklist", 
+                     "Reddy.wgEncodeDacMapabilityConsensusExcludable", 
+                     "Wold.hg38mitoblack", 
+                     "Yeo.eCLIP_blacklistregions.hg38liftover")
+# Correlation matrix, empty
+mtx_to_plot <- matrix(data = 0, nrow = length(all_denyGR_list), ncol = all_denyGR_list)
+# Fill it in
+for (i in 1:length(all_denyGR_list)) {
+  for (j in 1:length(all_denyGR_list)) {
+    # If diagonal, set to zero
+    if (i == j) mtx_to_plot[i, j] <- 0
+    # Process only one half, the other is symmetric
+    if (i > j) {
+      mtx_to_plot[i, j] <- mtx_to_plot[j, i] <- jaccard(all_denyGR_list[[i]], all_denyGR_list[[j]])[["jaccard"]]
+    }
+  }
+}
 # Trim row/colnames
-rownames(mtx_to_plot) <- colnames(mtx_to_plot) <- str_trunc(rownames(mtx_to_plot), width = 25)
-# Set diagonal to zero
-diag(mtx_to_plot) <- 0
+rownames(mtx_to_plot) <- colnames(mtx_to_plot) <- str_trunc(all_denyGR_name, width = 25) 
+# Save the plot
 png("denyranges_hg38_jaccard.png", width = 320, height = 300)
-pheatmap(mtx_to_plot)
+pheatmap(data.matrix(mtx_to_plot))
 dev.off()
 ```
 
@@ -259,7 +268,9 @@ dev.off()
 knitr::include_graphics('man/figures/denyranges_hg38_jaccard.png')
 ```
 
-One may decide to combine the deny ranges from all labs.
+One may decide to combine the deny ranges from all labs, although from previous 
+results we may decide to follow Anshul's [advice](https://twitter.com/anshulkundaje/status/1263546023151992832?s=20) [ENCFF356LFX](https://www.encodeproject.org/files/ENCFF356LFX/) 
+and use the `denyGR.hg38.Kundaje.1` object.
 
 ```{r eval=FALSE}
 denyGR.hg38.all <- reduce(c(denyGR.hg38.Bernstein, denyGR.hg38.Kundaje.1, denyGR.hg38.Kundaje.2, denyGR.hg38.Reddy, denyGR.hg38.Wold, denyGR.hg38.Yeo))
