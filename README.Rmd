@@ -31,7 +31,7 @@ regions. See Amemiya, Haley M., Anshul Kundaje, and Alan P. Boyle.
 of Problematic Regions of the Genome](https://doi.org/10.1038/s41598-019-45839-z).”
  _Scientific Reports_, December 2019. [Boyle-Lab/Blacklist/](https://github.com/Boyle-Lab/Blacklist/)
  
-TL;DR - For human hg38 genome assembly, [Anshul](https://twitter.com/anshulkundaje) [recommends](https://twitter.com/anshulkundaje/status/1263546023151992832?s=20) [ENCFF356LFX](https://www.encodeproject.org/files/ENCFF356LFX/).
+TL;DR - For human hg38 genome assembly, [Anshul](https://twitter.com/anshulkundaje) [recommends](https://twitter.com/anshulkundaje/status/1263546023151992832?s=20) [ENCFF356LFX](https://www.encodeproject.org/files/ENCFF356LFX/).  
 
 BED files of exclusion regions are available on the [ENCODE project](https://www.encodeproject.org/search/?searchTerm=exclusion+list)
 website. Human (hg19, hg38) and mouse (mm9, mm10) exclusion regions are available.
@@ -48,6 +48,7 @@ Download the full data from the [Google Drive folder](https://drive.google.com/d
 
 See [inst/scripts/make-data.R](inst/scripts/make-data.R) how to create the denyranges 
 GRanges objects.
+
 
 | Object                                                       | Number of regions | Assembly | Lab                      | Number of columns | Source                                                                                                  |
 |--------------------------------------------------------------|-------------------|----------|--------------------------|-------------------|---------------------------------------------------------------------------------------------------------|
@@ -70,6 +71,7 @@ GRanges objects.
 | mm10.Kundaje.mm10.blacklist.rds                              | 164               | mm10     | Anshul Kundaje, Stanford | 3                 | [ENCFF547MET](https://www.encodeproject.org/files/ENCFF547MET/)                                         |
 | mm10.Wold.mm10mitoblack.rds                                  | 123               | mm10     | Barbara Wold, Caltech    | 3                 | [ENCFF759PJK](https://www.encodeproject.org/files/ENCFF759PJK/)                                         |
 | mm9.Wold.mm9mitoblack.rds                                    | 123               | mm9      | Barbara Wold, Caltech    | 3                 | [ENCFF299EZH](https://www.encodeproject.org/files/ENCFF299EZH/)                                         |
+
 ## Install `denyranges`
 
 <!--`R` is an open-source statistical environment which can be easily modified to enhance its functionality via packages. `r Biocpkg("denyranges")` is a `R` package available via the [Bioconductor](http://bioconductor.org) repository for packages. `R` can be installed on any operating system from [CRAN](https://cran.r-project.org/) after which you can install `r Biocpkg("denyranges")` by using the following commands in your `R` session:-->
@@ -299,32 +301,6 @@ summary(width(denyGR.hg38.all))
 #    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 #       5    1778    2306    8153    2859 5407757 
 ```
-
-
-<!--
-This is a basic example which shows you how to solve a common problem:
-
-```{r example, eval = requireNamespace('denyranges')}
-library("denyranges")
-## basic example code
-```
-
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
-
-```{r cars}
-summary(cars)
-```
-
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date.
-
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
-```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub!
--->
 
 ## Citation
 
