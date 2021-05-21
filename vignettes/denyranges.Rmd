@@ -247,7 +247,7 @@ knitr::include_graphics('../man/figures/denyranges_hg38_sumwidth.png')
 
 We can compare Jaccard overlap between those sets of deny regions.
 
-```{r}
+```{r eval=FALSE}
 library(pheatmap)
 library(stringr)
 # Jaccard calculations
@@ -300,7 +300,7 @@ knitr::include_graphics('../man/figures/denyranges_hg38_jaccard.png')
 Note that some deny ranges objects contain six columns, implying there may be 
 some interesting metadata. Let's explore one.
 
-```{r}
+```{r eval=FALSE}
 mcols(denyGR.hg38.Reddy)
 mtx_to_plot <- as.data.frame(table(mcols(denyGR.hg38.Reddy)[["name"]]))
 colnames(mtx_to_plot) <- c("Type", "Number")
@@ -326,6 +326,7 @@ summary(width(denyGR.hg38.all))
 #    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 #       5    1778    2306    8153    2859 5407757 
 ```
+
 
 <!--
 ## Required knowledge

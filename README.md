@@ -48,27 +48,27 @@ folder](https://drive.google.com/drive/folders/124DZtsU0YVWqkb7dgu8Nk6b3N8-ShVSC
 See [inst/scripts/make-data.R](inst/scripts/make-data.R) how to create
 the denyranges GRanges objects.
 
-| Object                                                   | Number of regions | Lab                                     | Source                                                                                                  |
-|----------------------------------------------------------|-------------------|-----------------------------------------|---------------------------------------------------------------------------------------------------------|
-| hg19.Bernstein.Mint\_Blacklist\_hg19                     | 9035              | Bradley Bernstein, Broad                | [ENCFF200UUD](https://www.encodeproject.org/files/ENCFF200UUD/)                                         |
-| hg19.Birney.wgEncodeDacMapabilityConsensusExcludable     | 411               | Ewan Birney, EBI                        | [ENCFF001TDO](https://www.encodeproject.org/files/ENCFF001TDO/)                                         |
-| hg19.Crawford.wgEncodeDukeMapabilityRegionsExcludable    | 1649              | Gregory Crawford, Duke                  | [ENCFF001THR](https://www.encodeproject.org/files/ENCFF001THR/)                                         |
-| hg19.Wold.hg19mitoblack                                  | 295               | Barbara Wold, Caltech                   | [ENCFF055QTV](https://www.encodeproject.org/files/ENCFF055QTV/)                                         |
-| hg19.Yeo.eCLIP\_blacklistregions.hg19                    | 57                | Gene Yeo, UCSD                          | [ENCFF039QTN](https://www.encodeproject.org/files/ENCFF039QTN/)                                         |
-| hg38.Bernstein.Mint\_Blacklist\_GRCh38                   | 12052             | Bradley Bernstein, Broad                | [ENCFF023CZC](https://www.encodeproject.org/files/ENCFF023CZC/)                                         |
-| hg38.Kundaje.GRCh38\_unified\_blacklist                  | 38                | hg38.Kundaje.GRCh38\_unified\_blacklist | [ENCFF356LFX](https://www.encodeproject.org/files/ENCFF356LFX/)                                         |
-| hg38.Kundaje.GRCh38.blacklist                            | 910               | Anshul Kundaje, Stanford                | [ENCFF419RSJ](https://www.encodeproject.org/files/ENCFF419RSJ/)                                         |
-| hg38.Reddy.wgEncodeDacMapabilityConsensusExcludable.hg38 | 401               | Tim Reddy, Duke                         | [ENCFF220FIN](https://www.encodeproject.org/files/ENCFF220FIN/)                                         |
-| hg38.Wold.hg38mitoblack                                  | 299               | Barbara Wold, Caltech                   | [ENCFF940NTE](https://www.encodeproject.org/files/ENCFF940NTE/)                                         |
-| hg38.Yeo.eCLIP\_blacklistregions.hg38liftover.bed.fixed. | 56                | Gene Yeo, UCSD                          | [ENCFF269URO](https://www.encodeproject.org/files/ENCFF269URO/)                                         |
-| mm10.Hardison.blacklist.full                             | 7865              | Ross Hardison, PennState                | [ENCFF790DJT](https://www.encodeproject.org/files/ENCFF790DJT/)                                         |
-| mm10.Hardison.psublacklist.mm10                          | 5552              | Ross Hardison, PennState                | [ENCFF226BDM](https://www.encodeproject.org/files/ENCFF226BDM/)                                         |
-| mm10.Kundaje.anshul.blacklist.mm10                       | 3010              | Anshul Kundaje, Stanford                | [ENCFF999QPV](https://www.encodeproject.org/files/ENCFF999QPV/)                                         |
-| mm10.Kundaje.mm10.blacklist                              | 164               | Anshul Kundaje, Stanford                | [ENCFF547MET](https://www.encodeproject.org/files/ENCFF547MET/)                                         |
-| mm10.Wold.mm10mitoblack                                  | 123               | Barbara Wold, Caltech                   | [ENCFF759PJK](https://www.encodeproject.org/files/ENCFF759PJK/)                                         |
-| mm9.Wold.mm9mitoblack                                    | 123               | Barbara Wold, Caltech                   | [ENCFF299EZH](https://www.encodeproject.org/files/ENCFF299EZH/)                                         |
-| dm3.Kundaje.dm3-blacklist                                | 492               | Anshul Kundaje, Stanford                | [dm3-D.melanogaster](http://mitra.stanford.edu/kundaje/akundaje/release/blacklists/dm3-D.melanogaster/) |
-| ce10.Kundaje.ce10-blacklist                              | 122               | Anshul Kundaje, Stanford                | [ce10-C.elegans](http://mitra.stanford.edu/kundaje/akundaje/release/blacklists/ce10-C.elegans)          |
+| Object                                                       | Number of regions | Assembly | Lab                      | Number of columns | Source                                                                                                  |
+|--------------------------------------------------------------|-------------------|----------|--------------------------|-------------------|---------------------------------------------------------------------------------------------------------|
+| ce10.Kundaje.ce10-blacklist.rds                              | 122               | ce10     | Anshul Kundaje, Stanford | 3                 | [ce10-C.elegans](http://mitra.stanford.edu/kundaje/akundaje/release/blacklists/ce10-C.elegans)          |
+| dm3.Kundaje.dm3-blacklist.rds                                | 492               | dm3      | Anshul Kundaje, Stanford | 3                 | [dm3-D.melanogaster](http://mitra.stanford.edu/kundaje/akundaje/release/blacklists/dm3-D.melanogaster/) |
+| hg19.Bernstein.Mint\_Blacklist\_hg19.rds                     | 9035              | hg19     | Bradley Bernstein, Broad | 6                 | [ENCFF200UUD](https://www.encodeproject.org/files/ENCFF200UUD/)                                         |
+| hg19.Birney.wgEncodeDacMapabilityConsensusExcludable.rds     | 411               | hg19     | Ewan Birney, EBI         | 6                 | [ENCFF001TDO](https://www.encodeproject.org/files/ENCFF001TDO/)                                         |
+| hg19.Crawford.wgEncodeDukeMapabilityRegionsExcludable.rds    | 1649              | hg19     | Gregory Crawford, Duke   | 6                 | [ENCFF001THR](https://www.encodeproject.org/files/ENCFF001THR/)                                         |
+| hg19.Wold.hg19mitoblack.rds                                  | 295               | hg19     | Barbara Wold, Caltech    | 3                 | [ENCFF055QTV](https://www.encodeproject.org/files/ENCFF055QTV/)                                         |
+| hg19.Yeo.eCLIP\_blacklistregions.hg19.rds                    | 57                | hg19     | Gene Yeo, UCSD           | 6                 | [ENCFF039QTN](https://www.encodeproject.org/files/ENCFF039QTN/)                                         |
+| hg38.Bernstein.Mint\_Blacklist\_GRCh38.rds                   | 12052             | hg38     | Bradley Bernstein, Broad | 6                 | [ENCFF023CZC](https://www.encodeproject.org/files/ENCFF023CZC/)                                         |
+| hg38.Kundaje.GRCh38.blacklist.rds                            | 38                | hg38     | Anshul Kundaje, Stanford | 3                 | [ENCFF356LFX](https://www.encodeproject.org/files/ENCFF356LFX/)                                         |
+| hg38.Kundaje.GRCh38\_unified\_blacklist.rds                  | 910               | hg38     | Anshul Kundaje, Stanford | 3                 | [ENCFF419RSJ](https://www.encodeproject.org/files/ENCFF419RSJ/)                                         |
+| hg38.Reddy.wgEncodeDacMapabilityConsensusExcludable.hg38.rds | 401               | hg38     | Tim Reddy, Duke          | 6                 | [ENCFF220FIN](https://www.encodeproject.org/files/ENCFF220FIN/)                                         |
+| hg38.Wold.hg38mitoblack.rds                                  | 299               | hg38     | Barbara Wold, Caltech    | 3                 | [ENCFF940NTE](https://www.encodeproject.org/files/ENCFF940NTE/)                                         |
+| hg38.Yeo.eCLIP\_blacklistregions.hg38liftover.bed.fixed.rds  | 56                | hg38     | Gene Yeo, UCSD           | 6                 | [ENCFF269URO](https://www.encodeproject.org/files/ENCFF269URO/)                                         |
+| mm10.Hardison.blacklist.full.rds                             | 7865              | mm10     | Ross Hardison, PennState | 3                 | [ENCFF790DJT](https://www.encodeproject.org/files/ENCFF790DJT/)                                         |
+| mm10.Hardison.psublacklist.mm10.rds                          | 5552              | mm10     | Ross Hardison, PennState | 3                 | [ENCFF226BDM](https://www.encodeproject.org/files/ENCFF226BDM/)                                         |
+| mm10.Kundaje.anshul.blacklist.mm10.rds                       | 3010              | mm10     | Anshul Kundaje, Stanford | 3                 | [ENCFF999QPV](https://www.encodeproject.org/files/ENCFF999QPV/)                                         |
+| mm10.Kundaje.mm10.blacklist.rds                              | 164               | mm10     | Anshul Kundaje, Stanford | 3                 | [ENCFF547MET](https://www.encodeproject.org/files/ENCFF547MET/)                                         |
+| mm10.Wold.mm10mitoblack.rds                                  | 123               | mm10     | Barbara Wold, Caltech    | 3                 | [ENCFF759PJK](https://www.encodeproject.org/files/ENCFF759PJK/)                                         |
+| mm9.Wold.mm9mitoblack.rds                                    | 123               | mm9      | Barbara Wold, Caltech    | 3                 | [ENCFF299EZH](https://www.encodeproject.org/files/ENCFF299EZH/)                                         |
 
 ## Install `denyranges`
 
@@ -136,8 +136,18 @@ Compare the number of deny regions.
 
 ``` r
 library(ggplot2)
-mtx_to_plot <- data.frame(Count = c(length(denyGR.hg38.Bernstein), length(denyGR.hg38.Kundaje.1), length(denyGR.hg38.Kundaje.2), length(denyGR.hg38.Reddy), length(denyGR.hg38.Wold), length(denyGR.hg38.Yeo)),
-                          Source = c("Bernstein.Mint_Blacklist_GRCh38", "Kundaje.GRCh38_unified_blacklist", "Kundaje.GRCh38.blacklist", "Reddy.wgEncodeDacMapabilityConsensusExcludable", "Wold.hg38mitoblack", "Yeo.eCLIP_blacklistregions.hg38liftover.bed"))
+mtx_to_plot <- data.frame(Count = c(length(denyGR.hg38.Bernstein), 
+                                    length(denyGR.hg38.Kundaje.1), 
+                                    length(denyGR.hg38.Kundaje.2), 
+                                    length(denyGR.hg38.Reddy), 
+                                    length(denyGR.hg38.Wold), 
+                                    length(denyGR.hg38.Yeo)),
+                          Source = c("Bernstein.Mint_Blacklist_GRCh38", 
+                                     "Kundaje.GRCh38_unified_blacklist", 
+                                     "Kundaje.GRCh38.blacklist", 
+                                     "Reddy.wgEncodeDacMapabilityConsensusExcludable", 
+                                     "Wold.hg38mitoblack", 
+                                     "Yeo.eCLIP_blacklistregions.hg38liftover.bed"))
 # Order Source by the number of regions
 mtx_to_plot$Source <- factor(mtx_to_plot$Source, levels = mtx_to_plot$Source[order(mtx_to_plot$Count)])
 
@@ -155,8 +165,18 @@ tail distributions.
 
 ``` r
 library(ggridges)
-mtx_to_plot <- data.frame(Width = c(width(denyGR.hg38.Bernstein), width(denyGR.hg38.Kundaje.1), width(denyGR.hg38.Kundaje.2), width(denyGR.hg38.Reddy), width(denyGR.hg38.Wold), width(denyGR.hg38.Yeo)),
-                          Source = c(rep("Bernstein.Mint_Blacklist_GRCh38", length(denyGR.hg38.Bernstein)), rep("Kundaje.GRCh38_unified_blacklist", length(denyGR.hg38.Kundaje.1)), rep("Kundaje.GRCh38.blacklist", length(denyGR.hg38.Kundaje.2)), rep("Reddy.wgEncodeDacMapabilityConsensusExcludable", length(denyGR.hg38.Reddy)), rep("Wold.hg38mitoblack", length(denyGR.hg38.Wold)), rep("Yeo.eCLIP_blacklistregions.hg38liftover.bed", length(denyGR.hg38.Yeo))))
+mtx_to_plot <- data.frame(Width = c(width(denyGR.hg38.Bernstein), 
+                                    width(denyGR.hg38.Kundaje.1), 
+                                    width(denyGR.hg38.Kundaje.2), 
+                                    width(denyGR.hg38.Reddy), 
+                                    width(denyGR.hg38.Wold), 
+                                    width(denyGR.hg38.Yeo)),
+                          Source = c(rep("Bernstein.Mint_Blacklist_GRCh38", length(denyGR.hg38.Bernstein)),
+                                     rep("Kundaje.GRCh38_unified_blacklist", length(denyGR.hg38.Kundaje.1)),
+                                     rep("Kundaje.GRCh38.blacklist", length(denyGR.hg38.Kundaje.2)),
+                                     rep("Reddy.wgEncodeDacMapabilityConsensusExcludable", length(denyGR.hg38.Reddy)),
+                                     rep("Wold.hg38mitoblack", length(denyGR.hg38.Wold)),
+                                     rep("Yeo.eCLIP_blacklistregions.hg38liftover.bed", length(denyGR.hg38.Yeo))))
 
 ggplot(mtx_to_plot, aes(x = log2(Width), y = Source, fill = Source)) +
   geom_density_ridges() +
@@ -166,68 +186,101 @@ ggsave("denyranges_hg38_width.png", width = 5.5, height = 2)
 
 <img src="man/figures/denyranges_hg38_width.png" width="100%" />
 
-To compare pairwise Jaccard overlap between those deny regions, we
-download the bed files and use `bedtools` functionality.
+We can investigate the total width of each set of deny ranges.
 
 ``` r
-download.file(url = "https://drive.google.com/uc?export=download&id=16RhQF3haGbmvy6vPkKfAHDkQH391VKSR", destfile = "hg38.Bernstein.Mint_Blacklist_GRCh38.bed")
-
-download.file(url = "https://drive.google.com/uc?export=download&id=1kC4zcNark-BSafuYJq7eNj__hpWij3Ec", destfile = "hg38.Kundaje.GRCh38_unified_blacklist.bed")
-
-download.file(url = "https://drive.google.com/uc?export=download&id=1_TezPxxUHI_ez1gj-AlQmu2hU4TuZBa7", destfile = "hg38.Kundaje.GRCh38.blacklist.bed")
-
-download.file(url = "https://drive.google.com/uc?export=download&id=1nkHQHJnwYXTgGjlw2kKFTS3nNZBDfLNf", destfile = "hg38.Reddy.wgEncodeDacMapabilityConsensusExcludable.hg38.bed")
-
-download.file(url = "https://drive.google.com/uc?export=download&id=15EqvKch9tn_HmQo4WrKlIrf2zb1g5JKN", destfile = "hg38.Wold.hg38mitoblack.bed")
-
-download.file(url = "https://drive.google.com/uc?export=download&id=1pJ9gcOYKnvFvhy3BAYuRiypcgtfV65uJ", destfile = "hg38.Yeo.eCLIP_blacklistregions.hg38liftover.bed.fixed.bed")
+mtx_to_plot <- data.frame(TotalWidth = c(sum(width(denyGR.hg38.Bernstein)), 
+                                         sum(width(denyGR.hg38.Kundaje.1)), 
+                                         sum(width(denyGR.hg38.Kundaje.2)), 
+                                         sum(width(denyGR.hg38.Reddy)), 
+                                         sum(width(denyGR.hg38.Wold)), 
+                                         sum(width(denyGR.hg38.Yeo))), 
+                          Source = c("Bernstein.Mint_Blacklist_GRCh38", 
+                                     "Kundaje.GRCh38_unified_blacklist", 
+                                     "Kundaje.GRCh38.blacklist", 
+                                     "Reddy.wgEncodeDacMapabilityConsensusExcludable", 
+                                     "Wold.hg38mitoblack", 
+                                     "Yeo.eCLIP_blacklistregions.hg38liftover"))
+ggplot(mtx_to_plot, aes(x = TotalWidth, y = Source, fill = Source)) + 
+  geom_bar(stat="identity") + scale_x_log10() + scale_y_discrete(label=abbreviate) +
+  xlab("log10 total width")
+ggsave("denyranges_hg38_sumwidth.png", width = 6.5, height = 2)
 ```
 
-``` bash
-#!/bin/bash
+<img src="man/figures/denyranges_hg38_sumwidth.png" width="100%" />
 
-for file1 in `ls *.bed`
-do
-  sort -k 1,1 -k2,2n $file1 -o $file1
-done
-
-file_labels=`ls *.bed`
-
-echo name" "$file_labels > pairwise_jaccard.txt
-
-for file1 in `ls *.bed`
-do
-    echo -n $file1 >> pairwise_jaccard.txt
-
-    for file2 in `ls *.bed`;
-    do
-        # compute the jaccard stat for these two files.
-        jaccard=`bedtools jaccard -a $file1 -b $file2 | cut -f 3 | sed 1d`
-        
-        # report the jaccard stat for these two files
-        echo -n " "$jaccard >> pairwise_jaccard.txt
-    done
-    echo >> pairwise_jaccard.txt
-done
-```
+We can compare Jaccard overlap between those sets of deny regions.
 
 ``` r
 library(pheatmap)
 library(stringr)
-mtx_to_plot <- read.table("pairwise_jaccard.txt", sep = " ", header = TRUE, row.names = 1) 
-mtx_to_plot <- as.matrix(mtx_to_plot)
+# Jaccard calculations
+jaccard <- function(gr_a, gr_b) {
+  intersects <- intersect(gr_a, gr_b, ignore.strand = TRUE)
+  intersection <- sum(width(intersects))
+  union <- sum(width(union(gr_a, gr_b, ignore.strand = TRUE)))
+  DataFrame(intersection, union, 
+            jaccard = intersection/union,
+             n_intersections = length(intersects))
+}
+# List and names of all deny regions
+all_denyGR_list <- list(denyGR.hg38.Bernstein, 
+                        denyGR.hg38.Kundaje.1, 
+                        denyGR.hg38.Kundaje.2,
+                        denyGR.hg38.Reddy,
+                        denyGR.hg38.Wold,
+                        denyGR.hg38.Yeo)
+all_denyGR_name <- c("Bernstein.Mint_Blacklist_GRCh38", 
+                     "Kundaje.GRCh38_unified_blacklist", 
+                     "Kundaje.GRCh38.blacklist", 
+                     "Reddy.wgEncodeDacMapabilityConsensusExcludable", 
+                     "Wold.hg38mitoblack", 
+                     "Yeo.eCLIP_blacklistregions.hg38liftover")
+# Correlation matrix, empty
+mtx_to_plot <- matrix(data = 0, nrow = length(all_denyGR_list), ncol = all_denyGR_list)
+# Fill it in
+for (i in 1:length(all_denyGR_list)) {
+  for (j in 1:length(all_denyGR_list)) {
+    # If diagonal, set to zero
+    if (i == j) mtx_to_plot[i, j] <- 0
+    # Process only one half, the other is symmetric
+    if (i > j) {
+      mtx_to_plot[i, j] <- mtx_to_plot[j, i] <- jaccard(all_denyGR_list[[i]], all_denyGR_list[[j]])[["jaccard"]]
+    }
+  }
+}
 # Trim row/colnames
-rownames(mtx_to_plot) <- colnames(mtx_to_plot) <- str_trunc(rownames(mtx_to_plot), width = 25)
-# Set diagonal to zero
-diag(mtx_to_plot) <- 0
+rownames(mtx_to_plot) <- colnames(mtx_to_plot) <- str_trunc(all_denyGR_name, width = 25) 
+# Save the plot
 png("denyranges_hg38_jaccard.png", width = 320, height = 300)
-pheatmap(mtx_to_plot)
+pheatmap(data.matrix(mtx_to_plot))
 dev.off()
 ```
 
 <img src="man/figures/denyranges_hg38_jaccard.png" width="100%" />
 
-One may decide to combine the deny ranges from all labs.
+Note that some deny ranges objects contain six columns, implying there
+may be some interesting metadata. Let’s explore one.
+
+``` r
+mcols(denyGR.hg38.Reddy)
+mtx_to_plot <- as.data.frame(table(mcols(denyGR.hg38.Reddy)[["name"]]))
+colnames(mtx_to_plot) <- c("Type", "Number")
+mtx_to_plot <- mtx_to_plot[order(mtx_to_plot$Number), ]
+mtx_to_plot$Type <- factor(mtx_to_plot$Type, levels = mtx_to_plot$Type)
+ggplot(mtx_to_plot, aes(x = Number, y = Type, fill = Type)) +
+  geom_bar(stat="identity") +
+  theme_bw() + theme(legend.position = "none")
+ggsave("denyranges_hg38_Reddy_metadata.png", width = 5, height = 2.5)
+```
+
+<img src="man/figures/denyranges_hg38_Reddy_metadata.png" width="100%" />
+
+One may decide to combine the deny ranges from all labs, although from
+previous results we may decide to follow Anshul’s
+[advice](https://twitter.com/anshulkundaje/status/1263546023151992832?s=20)
+[ENCFF356LFX](https://www.encodeproject.org/files/ENCFF356LFX/) and use
+the `denyGR.hg38.Kundaje.1` object.
 
 ``` r
 denyGR.hg38.all <- reduce(c(denyGR.hg38.Bernstein, denyGR.hg38.Kundaje.1, denyGR.hg38.Kundaje.2, denyGR.hg38.Reddy, denyGR.hg38.Wold, denyGR.hg38.Yeo))
