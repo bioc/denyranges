@@ -312,6 +312,10 @@ ggplot(mtx_to_plot, aes(x = Number, y = Type, fill = Type)) +
 ggsave("denyranges_hg38_Reddy_metadata.png", width = 5, height = 2.5)
 ```
 
+```{r echo=FALSE}
+knitr::include_graphics('../man/figures/denyranges_hg38_Reddy_metadata.png')
+```
+
 One may decide to combine the deny ranges from all labs, although from previous 
 results we may decide to follow Anshul's [advice](https://twitter.com/anshulkundaje/status/1263546023151992832?s=20) [ENCFF356LFX](https://www.encodeproject.org/files/ENCFF356LFX/) 
 and use the `denyGR.hg38.Kundaje.1` object.
