@@ -115,11 +115,15 @@
 # wget http://mitra.stanford.edu/kundaje/akundaje/release/blacklists/ce10-C.elegans/ce10-blacklist.bed.gz
 # gzip --decompress --stdout ce10-blacklist.bed.gz | bedtools sort -i - > ce10.Kundaje.ce10-blacklist.bed
 
+# https://www.meuleman.org/research/dhsindex/
+# wget https://www.meuleman.org/DHS_Index_and_Vocabulary_hg38_WM20190703.txt.gz
+  
 # The following example demonstrate how the coordinates of assembly-specific 
 # problematic regions were converted into Rds objects
 
-# Download results data from
+# Download results data from https://drive.google.com/drive/folders/124DZtsU0YVWqkb7dgu8Nk6b3N8-ShVSC?usp=sharing
 library(GenomicRanges)
+library(readr)
 # Folder with results
 dir_in <- "/Volumes/GoogleDrive/My Drive/denydata"
 # All BED files
@@ -127,8 +131,7 @@ files <- list.files(path = dir_in, pattern = "bed$")
 # In each subfolder
 for (file in files) {
   # Read "fimo.bed" created by "fimo.qsub"
-  denyBED <- read.delim(file.path(dir_in, file), sep = "\t",
-                        header = FALSE, stringsAsFactors = FALSE)
+  denyBED <- read_tsv(file.path(dir_in, file), col_names = FALSE)
   # Assign column names depending on the number of columns
   if (ncol(denyBED) == 3) { # Only 3 columns
     colnames(denyBED) <- c("chr", "start", "stop")
