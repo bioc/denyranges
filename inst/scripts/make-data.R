@@ -115,9 +115,6 @@
 # wget http://mitra.stanford.edu/kundaje/akundaje/release/blacklists/ce10-C.elegans/ce10-blacklist.bed.gz
 # gzip --decompress --stdout ce10-blacklist.bed.gz | bedtools sort -i - > ce10.Kundaje.ce10-blacklist.bed
 
-# https://www.meuleman.org/research/dhsindex/
-# wget https://www.meuleman.org/DHS_Index_and_Vocabulary_hg38_WM20190703.txt.gz
-  
 # The following example demonstrate how the coordinates of assembly-specific 
 # problematic regions were converted into Rds objects
 
