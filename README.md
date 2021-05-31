@@ -1,7 +1,11 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Deny (exclusion) regions
+# Deny ranges
+
+Genomic ranges of deny (aka problematic, exclusion, blacklisted) regions
+that should be avoided when working with genomic data. For human, mouse,
+and selected other organisms.
 
 <!-- badges: start -->
 
@@ -11,11 +15,11 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 
 # Basics
 
-*[denyranges](https://bioconductor.org/packages/3.12/denyranges)* is an
+*[denyranges](https://bioconductor.org/packages/3.13/denyranges)* is an
 experimental data package, to be submitted as an AnnotatiohHub
 Bioconductor package.
 
-*[denyranges](https://bioconductor.org/packages/3.12/denyranges)*
+*[denyranges](https://bioconductor.org/packages/3.13/denyranges)*
 contains genomic coordinates of problematic genomic regions. See
 Amemiya, Haley M., Anshul Kundaje, and Alan P. Boyle. “[The ENCODE
 Blacklist: Identification of Problematic Regions of the
@@ -39,10 +43,7 @@ unified place for informed retrieval of exclusion regions.
 Naming convention: `<genome assembly>.<lab>.<original file name>`, e.g.,
 `hg19.Birney.wgEncodeDacMapabilityConsensusExcludable`.
 
-*[denyranges](https://bioconductor.org/packages/3.12/denyranges)*
-package currently contains 19 Rds objects.
-
-Download the full data from the [Google Drive
+Download all data from the [Google Drive
 folder](https://drive.google.com/drive/folders/124DZtsU0YVWqkb7dgu8Nk6b3N8-ShVSC?usp=sharing)
 
 See [inst/scripts/make-data.R](inst/scripts/make-data.R) how to create
@@ -72,7 +73,7 @@ the denyranges GRanges objects.
 
 ## Install `denyranges`
 
-<!--`R` is an open-source statistical environment which can be easily modified to enhance its functionality via packages. *[denyranges](https://bioconductor.org/packages/3.12/denyranges)* is a `R` package available via the [Bioconductor](http://bioconductor.org) repository for packages. `R` can be installed on any operating system from [CRAN](https://cran.r-project.org/) after which you can install *[denyranges](https://bioconductor.org/packages/3.12/denyranges)* by using the following commands in your `R` session:-->
+<!--`R` is an open-source statistical environment which can be easily modified to enhance its functionality via packages. *[denyranges](https://bioconductor.org/packages/3.13/denyranges)* is a `R` package available via the [Bioconductor](http://bioconductor.org) repository for packages. `R` can be installed on any operating system from [CRAN](https://cran.r-project.org/) after which you can install *[denyranges](https://bioconductor.org/packages/3.13/denyranges)* by using the following commands in your `R` session:-->
 
 ``` r
 if (!requireNamespace("BiocManager", quietly = TRUE)) {
@@ -85,7 +86,7 @@ BiocManager::install("mdozmorov/denyranges")
 # BiocManager::valid()
 ```
 
-## Use denyranges binding sites
+## Use denyranges
 
 ``` r
 # hg38 denyranges coordinates
@@ -293,6 +294,110 @@ summary(width(denyGR.hg38.all))
 #       5    1778    2306    8153    2859 5407757 
 ```
 
+## Centromeres, telomeres, etc.
+
+Besides the ENCODE-produced deny regions, we may want to exclude
+centromeres, telomeres, and other gap locations. The “Gap Locations”
+track for Homo Sapiens is available for the GRcH37/hg19 genome assembly
+as a [UCSC ‘gap’
+table](http://genome.ucsc.edu/cgi-bin/hgTables?db=hg19&hgta_group=map&hgta_track=gap&hgta_table=gap&hgta_doSchema=describe+table+schema).
+It can be retrieved from
+*[AnnotationHub](https://bioconductor.org/packages/3.13/AnnotationHub)*,
+but lacks the metadata columns needed to decide the type of gaps.
+
+``` r
+library(AnnotationHub)
+ah <- AnnotationHub()
+# Search for the gap track
+# ahData <- query(ah, c("gap", "Homo sapiens", "hg19"))
+# ahData[ctcfData$title == "Gap"]
+gaps <- ahData[["AH6444"]]
+```
+
+    > gaps
+    UCSC track 'gap'
+    UCSCData object with 457 ranges and 0 metadata columns:
+                   seqnames              ranges strand
+                      <Rle>           <IRanges>  <Rle>
+        [1]            chr1 124535435-142535434      *
+        [2]            chr1 121535435-124535434      *
+        [3]            chr1     3845269-3995268      *
+        [4]            chr1   13219913-13319912      *
+        [5]            chr1   17125659-17175658      *
+        ...             ...                 ...    ...
+      [453]  chr6_ssto_hap7     4639807-4661556      *
+      [454]  chr6_ssto_hap7     4723510-4774367      *
+      [455]  chr6_ssto_hap7     4783799-4836049      *
+      [456] chr17_ctg5_hap1     1256795-1306794      *
+      [457] chr17_ctg5_hap1     1588969-1638968      *
+      -------
+      seqinfo: 93 sequences (1 circular) from hg19 genome
+
+The [UCSC ‘gap’
+table](http://genome.ucsc.edu/cgi-bin/hgTables?db=hg19&hgta_group=map&hgta_track=gap&hgta_table=gap&hgta_doSchema=describe+table+schema)
+provides better granularity about the types of gaps available. E.g., for
+human, hg19, we have the following types and the number of gaps.
+
+<img src="man/figures/denyranges_hg19_gaps_number.png" width="100%" />
+
+Those objects are provided as individual GRanges.
+
+Naming convention: `<genome assembly>.UCSC.<gap type>`, e.g.,
+`hg19.UCSC.gap_centromere`.
+
+Download all data from the [Google Drive
+folder](https://drive.google.com/drive/folders/124DZtsU0YVWqkb7dgu8Nk6b3N8-ShVSC?usp=sharing)
+
+| Object                        | Number of regions | Assembly | Lab  | Number of columns | Source                                                                                                                                             |
+|-------------------------------|-------------------|----------|------|-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| hg19.UCSC.centromere.rds      | 24                | hg19     | UCSC | 9                 | [hg19 gap table](http://genome.ucsc.edu/cgi-bin/hgTables?db=hg19&hgta_group=map&hgta_track=gap&hgta_table=gap&hgta_doSchema=describe+table+schema) |
+| hg19.UCSC.clone.rds           | 207               | hg19     | UCSC | 9                 | [hg19 gap table](http://genome.ucsc.edu/cgi-bin/hgTables?db=hg19&hgta_group=map&hgta_track=gap&hgta_table=gap&hgta_doSchema=describe+table+schema) |
+| hg19.UCSC.contig.rds          | 163               | hg19     | UCSC | 9                 | [hg19 gap table](http://genome.ucsc.edu/cgi-bin/hgTables?db=hg19&hgta_group=map&hgta_track=gap&hgta_table=gap&hgta_doSchema=describe+table+schema) |
+| hg19.UCSC.heterochromatin.rds | 12                | hg19     | UCSC | 9                 | [hg19 gap table](http://genome.ucsc.edu/cgi-bin/hgTables?db=hg19&hgta_group=map&hgta_track=gap&hgta_table=gap&hgta_doSchema=describe+table+schema) |
+| hg19.UCSC.scaffold.rds        | 40                | hg19     | UCSC | 9                 | [hg19 gap table](http://genome.ucsc.edu/cgi-bin/hgTables?db=hg19&hgta_group=map&hgta_track=gap&hgta_table=gap&hgta_doSchema=describe+table+schema) |
+| hg19.UCSC.short\_arm.rds      | 5                 | hg19     | UCSC | 9                 | [hg19 gap table](http://genome.ucsc.edu/cgi-bin/hgTables?db=hg19&hgta_group=map&hgta_track=gap&hgta_table=gap&hgta_doSchema=describe+table+schema) |
+| hg19.UCSC.telomere.rds        | 46                | hg19     | UCSC | 9                 | [hg19 gap table](http://genome.ucsc.edu/cgi-bin/hgTables?db=hg19&hgta_group=map&hgta_track=gap&hgta_table=gap&hgta_doSchema=describe+table+schema) |
+| hg38.UCSC.contig.rds          | 285               | hg38     | UCSC | 9                 | [hg38 gap table](http://genome.ucsc.edu/cgi-bin/hgTables?db=hg38&hgta_group=map&hgta_track=gap&hgta_table=gap&hgta_doSchema=describe+table+schema) |
+| hg38.UCSC.heterochromatin.rds | 11                | hg38     | UCSC | 9                 | [hg38 gap table](http://genome.ucsc.edu/cgi-bin/hgTables?db=hg38&hgta_group=map&hgta_track=gap&hgta_table=gap&hgta_doSchema=describe+table+schema) |
+| hg38.UCSC.scaffold.rds        | 478               | hg38     | UCSC | 9                 | [hg38 gap table](http://genome.ucsc.edu/cgi-bin/hgTables?db=hg38&hgta_group=map&hgta_track=gap&hgta_table=gap&hgta_doSchema=describe+table+schema) |
+| hg38.UCSC.short\_arm.rds      | 5                 | hg38     | UCSC | 9                 | [hg38 gap table](http://genome.ucsc.edu/cgi-bin/hgTables?db=hg38&hgta_group=map&hgta_track=gap&hgta_table=gap&hgta_doSchema=describe+table+schema) |
+| hg38.UCSC.telomere.rds        | 48                | hg38     | UCSC | 9                 | [hg38 gap table](http://genome.ucsc.edu/cgi-bin/hgTables?db=hg38&hgta_group=map&hgta_track=gap&hgta_table=gap&hgta_doSchema=describe+table+schema) |
+| mm10.UCSC.centromere.rds      | 20                | mm10     | UCSC | 9                 | [mm10 gap table](http://genome.ucsc.edu/cgi-bin/hgTables?db=mm10&hgta_group=map&hgta_track=gap&hgta_table=gap&hgta_doSchema=describe+table+schema) |
+| mm10.UCSC.clone.rds           | 114               | mm10     | UCSC | 9                 | [mm10 gap table](http://genome.ucsc.edu/cgi-bin/hgTables?db=mm10&hgta_group=map&hgta_track=gap&hgta_table=gap&hgta_doSchema=describe+table+schema) |
+| mm10.UCSC.contig.rds          | 104               | mm10     | UCSC | 9                 | [mm10 gap table](http://genome.ucsc.edu/cgi-bin/hgTables?db=mm10&hgta_group=map&hgta_track=gap&hgta_table=gap&hgta_doSchema=describe+table+schema) |
+| mm10.UCSC.fragment.rds        | 1                 | mm10     | UCSC | 9                 | [mm10 gap table](http://genome.ucsc.edu/cgi-bin/hgTables?db=mm10&hgta_group=map&hgta_track=gap&hgta_table=gap&hgta_doSchema=describe+table+schema) |
+| mm10.UCSC.other.rds           | 384               | mm10     | UCSC | 9                 | [mm10 gap table](http://genome.ucsc.edu/cgi-bin/hgTables?db=mm10&hgta_group=map&hgta_track=gap&hgta_table=gap&hgta_doSchema=describe+table+schema) |
+| mm10.UCSC.short\_arm.rds      | 21                | mm10     | UCSC | 9                 | [mm10 gap table](http://genome.ucsc.edu/cgi-bin/hgTables?db=mm10&hgta_group=map&hgta_track=gap&hgta_table=gap&hgta_doSchema=describe+table+schema) |
+| mm10.UCSC.telomere.rds        | 42                | mm10     | UCSC | 9                 | [mm10 gap table](http://genome.ucsc.edu/cgi-bin/hgTables?db=mm10&hgta_group=map&hgta_track=gap&hgta_table=gap&hgta_doSchema=describe+table+schema) |
+| mm9.UCSC.centromere.rds       | 21                | mm9      | UCSC | 9                 | [mm9 gap table](http://genome.ucsc.edu/cgi-bin/hgTables?db=mm9&hgta_group=map&hgta_track=gap&hgta_table=gap&hgta_doSchema=describe+table+schema)   |
+| mm9.UCSC.contig.rds           | 281               | mm9      | UCSC | 9                 | [mm9 gap table](http://genome.ucsc.edu/cgi-bin/hgTables?db=mm9&hgta_group=map&hgta_track=gap&hgta_table=gap&hgta_doSchema=describe+table+schema)   |
+| mm9.UCSC.fragment.rds         | 709               | mm9      | UCSC | 9                 | [mm9 gap table](http://genome.ucsc.edu/cgi-bin/hgTables?db=mm9&hgta_group=map&hgta_track=gap&hgta_table=gap&hgta_doSchema=describe+table+schema)   |
+
+We can similarly load any gap type object.
+
+``` r
+download.file(url = "https://drive.google.com/uc?export=download&id=1JwkhZi3BHFqOueHv-tOOJtroAnFoyFWF", destfile = "hg19.UCSC.centromere.rds")
+gapsGR_hg19_centromete <- readRDS(file = "hg19.UCSC.centromere.rds")
+```
+
+    > gapsGR_hg19_centromete
+    GRanges object with 24 ranges and 6 metadata columns:
+          seqnames              ranges strand |       bin        ix           n      size        type      bridge
+             <Rle>           <IRanges>  <Rle> | <numeric> <numeric> <character> <numeric> <character> <character>
+        2     chr1 121535434-124535434      * |        23      1270           N   3000000  centromere          no
+      184    chr21   11288129-14288129      * |        10        22           N   3000000  centromere          no
+      199    chr22   13000000-16000000      * |        10         3           N   3000000  centromere          no
+      206    chr19   24681782-27681782      * |         1       410           N   3000000  centromere          no
+      224     chrY   10104553-13104553      * |        10       105           N   3000000  centromere          no
+      ...      ...                 ...    ... .       ...       ...         ...       ...         ...         ...
+      439     chr6   58830166-61830166      * |        16       628           N   3000000  centromere          no
+      453     chr5   46405641-49405641      * |        14       452           N   3000000  centromere          no
+      460     chr4   49660117-52660117      * |         1       447           N   3000000  centromere          no
+      476     chr3   90504854-93504854      * |         2       784           N   3000000  centromere          no
+      481     chr2   92326171-95326171      * |        20       770           N   3000000  centromere          no
+      -------
+      seqinfo: 24 sequences from hg19 genome
+
 ## Citation
 
 Below is the citation output from using `citation('denyranges')` in R.
@@ -302,7 +407,8 @@ Please run this yourself to check for any updates on how to cite
 ``` r
 print(citation("denyranges"), bibtex = TRUE)
 #> 
-#> Dozmorov MG (2021). _denyranges_.
+#> Dozmorov MG, Davis E, Mu W, Lee S, Triche T, Phanstiel D, Love M
+#> (2021). _denyranges_.
 #> https://github.com/mdozmorov/denyranges/denyranges - R package version
 #> 0.99.0, <URL: https://github.com/mdozmorov/denyranges>.
 #> 
@@ -310,7 +416,7 @@ print(citation("denyranges"), bibtex = TRUE)
 #> 
 #>   @Manual{,
 #>     title = {denyranges},
-#>     author = {Mikhail G. Dozmorov},
+#>     author = {Mikhail G. Dozmorov and Eric Davis and Wancen Mu and Stuart Lee and Tim Triche and Douglas Phanstiel and Michael Love},
 #>     year = {2021},
 #>     url = {https://github.com/mdozmorov/denyranges},
 #>     note = {https://github.com/mdozmorov/denyranges/denyranges - R package version 0.99.0},
@@ -337,7 +443,7 @@ contributing to this project, you agree to abide by its terms.
     *[rcmdcheck](https://CRAN.R-project.org/package=rcmdcheck)*
     customized to use [Bioconductor’s docker
     containers](https://www.bioconductor.org/help/docker/) and
-    *[BiocCheck](https://bioconductor.org/packages/3.12/BiocCheck)*.
+    *[BiocCheck](https://bioconductor.org/packages/3.13/BiocCheck)*.
 -   Code coverage assessment is possible thanks to
     [codecov](https://codecov.io/gh) and
     *[covr](https://CRAN.R-project.org/package=covr)*.
@@ -353,7 +459,7 @@ contributing to this project, you agree to abide by its terms.
 For more details, check the `dev` directory.
 
 This package was developed using
-*[biocthis](https://bioconductor.org/packages/3.12/biocthis)*.
+*[biocthis](https://bioconductor.org/packages/3.13/biocthis)*.
 
 ## Code of Conduct
 
