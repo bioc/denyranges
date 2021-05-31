@@ -120,9 +120,11 @@
 
 # Download results data from https://drive.google.com/drive/folders/124DZtsU0YVWqkb7dgu8Nk6b3N8-ShVSC?usp=sharing
 library(GenomicRanges)
+library(rtracklayer)
 library(readr)
 # Folder with results
 dir_in <- "/Volumes/GoogleDrive/My Drive/denydata"
+
 # All BED files
 files <- list.files(path = dir_in, pattern = "bed$")
 # In each subfolder
@@ -158,3 +160,57 @@ for (file in files) {
   saveRDS(object = denyGR, file = file.path(dir_in, sub("bed$", "rds", file)))
   # denyGR <- readRDS(file = file.path(dir_in, sub("bed$", "rds", file)))
 }
+
+# The following example demonstrates how the UCSC gaps data were processed
+# All genomes
+genomes <- c("hg19", "hg38", "mm9", "mm10")
+# Process each genome
+for (genome_id in genomes) {
+  print(paste("Genome", genome_id))
+  # Get chromosome info
+  chrom_data <- GenomeInfoDb::getChromInfoFromUCSC(genome = genome_id)
+  # Get genome-specific gaps table
+  mySession <- browserSession()
+  genome(mySession) <- genome_id
+  # gaps <- getTable(ucscTableQuery(mySession, track = "gap"))
+  query <- ucscTableQuery(mySession, table = "gap")
+  gaps <- getTable(query)
+  # Process each gap type
+  for (gap_type in sort(unique(gaps$type))) {
+    # gap_type <- "heterochromatin"
+    gaps_selected <- gaps[gaps$type == gap_type, ]
+    gapsGR <- makeGRangesFromDataFrame(gaps_selected, keep.extra.columns = TRUE)
+    # Select seqinfo data for the gaps object
+    chrom_data_subset <- chrom_data[chrom_data$chrom %in% seqlevels(gapsGR), ]
+    chrom_data_subset <- chrom_data_subset[match(seqlevels(gapsGR), chrom_data_subset$chrom), ]
+    if (!all(seqlevels(gapsGR) == chrom_data_subset$chrom)) {
+      stop("Chromosome names do not match.")
+    }
+    # Assign seqinfo data
+    seqlengths(gapsGR) <- chrom_data_subset$size
+    isCircular(gapsGR) <- chrom_data_subset$circular
+    genome(gapsGR)     <- genome_id
+    
+    # Construct file name, e.g., hg19.UCSC.gap_centromere.rds
+    fileout <- paste0(genome_id, ".UCSC.", gap_type, ".rds")
+    # Save as Rds object
+    saveRDS(object = gapsGR, file = file.path(dir_in, fileout))
+    print(paste("Length", gap_type, length(gapsGR)))
+  }
+}
+
+
+
+# # Number of samples per cell/tissue type?
+# library(ggplot2)
+# mtx_to_plot <- as.data.frame(table(gaps$type))
+# colnames(mtx_to_plot) <- c("Type", "Number")
+# mtx_to_plot <- mtx_to_plot[order(mtx_to_plot$Number), ]
+# mtx_to_plot$Type <- factor(mtx_to_plot$Type, levels = mtx_to_plot$Type)
+# ggplot(mtx_to_plot, aes(x = Number, y = Type, fill = Type)) +
+#   geom_bar(stat="identity") +
+#   theme_bw() + theme(legend.position = "none")
+# ggsave("denyranges_hg19_gaps_number.png", width = 5, height = 2.5)
+
+
+
