@@ -26,9 +26,11 @@ Authors@R: c(
            family = "Love",
            role = c("aut"))
            )
-Description: Genomic coordinates of problematic genomic regions as GRanges. 
-    Primarily for human and mouse genomes, hg19/hg38 and mm9/mm10 genome 
-    assemblies. Data source: the ENCODE project.
+Description: Genomic coordinates of problematic genomic regions as GRanges, 
+    previously known as blacklisted or exclusion regions (ENCODE data). Includes 
+    GRanges of various genome gaps, such as centromeres, telomeres, known 
+    heterochromatin regions, etc. (UCSC 'gap' table data). Primarily for human 
+    and mouse genomes, hg19/hg38 and mm9/mm10 genome assemblies. 
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
