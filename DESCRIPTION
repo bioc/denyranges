@@ -43,6 +43,7 @@ Suggests:
     RefManageR,
     rmarkdown,
     rCGH,
-    sessioninfo
+    sessioninfo,
+    AnnotationHub
 VignetteBuilder: knitr
 biocViews: AnnotationData, AnnotationHub, FunctionalAnnotation, GenomicSequence
