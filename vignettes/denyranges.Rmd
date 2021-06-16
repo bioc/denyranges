@@ -421,8 +421,8 @@ genomic coordinates for the "centromere" gap type. These can be obtained from
 the `r BiocStyle::Biocpkg("rCGH")` package as follows:
 
 ```{r}
-library(rCGH)
-library(GenomicRanges)
+suppressPackageStartupMessages(library(rCGH))
+suppressPackageStartupMessages(library(GenomicRanges))
 # hg38 # data.frame
 # Adjust chromosome names
 hg38$chrom[hg38$chrom == 23] <- "X"

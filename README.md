@@ -407,43 +407,8 @@ be obtained from the
 follows:
 
 ``` r
-library(rCGH)
-#> 
-#>  ********************************************************
-#>  Current version: 1.22.0
-#>  This version may contain important changes.
-#>  Use news(Version == '1.22.0', package = 'rCGH').
-#>  ********************************************************
-library(GenomicRanges)
-#> Loading required package: stats4
-#> Loading required package: BiocGenerics
-#> Loading required package: parallel
-#> 
-#> Attaching package: 'BiocGenerics'
-#> The following objects are masked from 'package:parallel':
-#> 
-#>     clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
-#>     clusterExport, clusterMap, parApply, parCapply, parLapply,
-#>     parLapplyLB, parRapply, parSapply, parSapplyLB
-#> The following objects are masked from 'package:stats':
-#> 
-#>     IQR, mad, sd, var, xtabs
-#> The following objects are masked from 'package:base':
-#> 
-#>     anyDuplicated, append, as.data.frame, basename, cbind, colnames,
-#>     dirname, do.call, duplicated, eval, evalq, Filter, Find, get, grep,
-#>     grepl, intersect, is.unsorted, lapply, Map, mapply, match, mget,
-#>     order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
-#>     rbind, Reduce, rownames, sapply, setdiff, sort, table, tapply,
-#>     union, unique, unsplit, which.max, which.min
-#> Loading required package: S4Vectors
-#> 
-#> Attaching package: 'S4Vectors'
-#> The following objects are masked from 'package:base':
-#> 
-#>     expand.grid, I, unname
-#> Loading required package: IRanges
-#> Loading required package: GenomeInfoDb
+suppressPackageStartupMessages(library(rCGH))
+suppressPackageStartupMessages(library(GenomicRanges))
 # hg38 # data.frame
 # Adjust chromosome names
 hg38$chrom[hg38$chrom == 23] <- "X"
@@ -492,7 +457,7 @@ print(citation("denyranges"), bibtex = TRUE)
 #> Dozmorov MG, Davis E, Mu W, Lee S, Triche T, Phanstiel D, Love M
 #> (2021). _denyranges_.
 #> https://github.com/mdozmorov/denyranges/denyranges - R package version
-#> 0.99.0, <URL: https://github.com/mdozmorov/denyranges>.
+#> 0.99.1, <URL: https://github.com/mdozmorov/denyranges>.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
@@ -501,7 +466,7 @@ print(citation("denyranges"), bibtex = TRUE)
 #>     author = {Mikhail G. Dozmorov and Eric Davis and Wancen Mu and Stuart Lee and Tim Triche and Douglas Phanstiel and Michael Love},
 #>     year = {2021},
 #>     url = {https://github.com/mdozmorov/denyranges},
-#>     note = {https://github.com/mdozmorov/denyranges/denyranges - R package version 0.99.0},
+#>     note = {https://github.com/mdozmorov/denyranges/denyranges - R package version 0.99.1},
 #>   }
 ```
 
